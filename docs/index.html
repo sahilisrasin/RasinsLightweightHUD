@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rasin's Lightweight HUD (RLHUD) · Minecraft Java 1.21.11 Fabric Mod</title>
+  <meta name="description" content="Rasin's Lightweight HUD (RLHUD) is a lightweight PvP HUD mod for Minecraft Java Edition 1.21.11 using Fabric.">
+  <meta name="theme-color" content="#0e0f11">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://sahilisrasin.github.io/RasinsLightweightHUD/">
+  <meta property="og:title" content="Rasin's Lightweight HUD (RLHUD)">
+  <meta property="og:description" content="A lightweight PvP HUD suite for Minecraft Java Edition 1.21.11 · Fabric.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="wordmark" href="#top" aria-label="RLHUD home">
+        <span class="wordmark-mark" aria-hidden="true">RL</span>
+        <span class="wordmark-text">RLHUD</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#top" aria-current="page">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Minecraft Java Edition · Fabric</p>
+        <h1>Rasin's Lightweight HUD</h1>
+        <p class="lead">A lightweight PvP HUD suite for Minecraft Java Edition.</p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/sahilisrasin/RasinsLightweightHUD/releases/download/ArmorHUD/rlhud-1.0.0.jar" download>Download RLHUD 1.0.0</a>
+          <a class="btn btn-secondary" href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">View on GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+
+        <p class="compat-label">Minecraft Java Edition 1.21.11 · Fabric</p>
+      </div>
+    </section>
+
+    <!-- PRODUCT PREVIEW -->
+    <section class="section" aria-labelledby="preview-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Preview</p>
+          <h2 id="preview-heading">In-game view</h2>
+        </header>
+
+        <figure class="preview-frame">
+          <!--
+            TO REPLACE: add a real screenshot at docs/assets/screenshot-hud.png,
+            then swap the .preview-placeholder div below for:
+            <img src="assets/screenshot-hud.png" alt="RLHUD displayed in a Minecraft PvP match" width="1920" height="1080" loading="lazy">
+          -->
+          <div class="preview-placeholder" role="img" aria-label="Illustrative placeholder. Not an in-game screenshot.">
+            <div class="placeholder-hotbar" aria-hidden="true"></div>
+            <div class="placeholder-hud" aria-hidden="true">
+              <span class="placeholder-chip">Armor 84%</span>
+              <span class="placeholder-chip">CPS 11</span>
+              <span class="placeholder-chip">FPS 144</span>
+              <span class="placeholder-chip">Ping 32 ms</span>
+            </div>
+          </div>
+          <figcaption>Illustrative placeholder. This is not an actual in-game screenshot.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section section-alt" aria-labelledby="features-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Features</p>
+          <h2 id="features-heading">What RLHUD includes</h2>
+          <p class="section-intro">Each feature is listed with its current development status. Only features verified as working are marked Available.</p>
+        </header>
+
+        <ul class="feature-grid">
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>Armor Durability HUD</h3>
+              <span class="status status-progress">In Development</span>
+            </div>
+            <p>Shows the durability of equipped armor pieces on screen.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>Keystrokes</h3>
+              <span class="status status-progress">In Development</span>
+            </div>
+            <p>Displays movement and action key presses.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>CPS Counter</h3>
+              <span class="status status-progress">In Development</span>
+            </div>
+            <p>Shows clicks per second for combat practice and tracking.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>FPS Display</h3>
+              <span class="status status-progress">In Development</span>
+            </div>
+            <p>Shows the current frame rate.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>Ping Display</h3>
+              <span class="status status-progress">In Development</span>
+            </div>
+            <p>Shows the current network latency to the server.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>HUD Customization</h3>
+              <span class="status status-planned">Planned</span>
+            </div>
+            <p>Options to reposition and adjust HUD elements.</p>
+          </li>
+          <li class="feature-card">
+            <div class="feature-top">
+              <h3>Combat Information</h3>
+              <span class="status status-planned">Planned</span>
+            </div>
+            <p>Additional combat-related readouts.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section id="downloads" class="section" aria-labelledby="downloads-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Downloads</p>
+          <h2 id="downloads-heading">Get RLHUD</h2>
+          <p class="section-intro">For normal Minecraft installation, download the player mod JAR, not the sources archive.</p>
+        </header>
+
+        <div class="download-grid">
+          <article class="download-card download-primary">
+            <p class="download-tag">Player download</p>
+            <h3>RLHUD 1.0.0 — Player Download</h3>
+            <dl class="meta">
+              <div><dt>File</dt><dd><code>rlhud-1.0.0.jar</code></dd></div>
+              <div><dt>Audience</dt><dd>Minecraft players</dd></div>
+            </dl>
+            <p>The mod JAR for players installing RLHUD into a compatible Fabric Minecraft installation.</p>
+            <a class="btn btn-primary btn-block" href="https://github.com/sahilisrasin/RasinsLightweightHUD/releases/download/ArmorHUD/rlhud-1.0.0.jar" download>Download RLHUD 1.0.0</a>
+          </article>
+
+          <article class="download-card download-secondary">
+            <p class="download-tag">Source code</p>
+            <h3>RLHUD 1.0.0 — Sources</h3>
+            <dl class="meta">
+              <div><dt>File</dt><dd><code>rlhud-1.0.0-sources.jar</code></dd></div>
+              <div><dt>Audience</dt><dd>Developers</dd></div>
+            </dl>
+            <p>The source archive for developers who want to inspect the implementation.</p>
+            <a class="btn btn-ghost btn-block" href="https://github.com/sahilisrasin/RasinsLightweightHUD/releases/download/ArmorHUD/rlhud-1.0.0-sources.jar" download>Download Sources</a>
+          </article>
+        </div>
+
+        <p class="release-links">
+          <a href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">Full repository on GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/sahilisrasin/RasinsLightweightHUD/releases/tag/ArmorHUD" target="_blank" rel="noopener">Release page<span class="sr-only"> (opens in a new tab)</span></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- COMPATIBILITY -->
+    <section class="section section-alt" aria-labelledby="compat-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Compatibility</p>
+          <h2 id="compat-heading">Requirements</h2>
+        </header>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>Player installation</h3>
+            <ul class="spec-list">
+              <li><span>Minecraft</span> Java Edition 1.21.11</li>
+              <li><span>Mod loader</span> Fabric</li>
+              <li><span>Fabric Loader</span> 0.19.5</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Development</h3>
+            <ul class="spec-list">
+              <li><span>Language</span> Java</li>
+              <li><span>Framework</span> Fabric</li>
+              <li><span>Java target</span> 21</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION -->
+    <section class="section" aria-labelledby="install-heading">
+      <div class="container narrow">
+        <header class="section-header">
+          <p class="eyebrow">Installation</p>
+          <h2 id="install-heading">How to install</h2>
+        </header>
+
+        <ol class="steps">
+          <li>
+            <h3>Install Fabric for Minecraft 1.21.11</h3>
+            <p>Install the Fabric Loader for Minecraft 1.21.11 using the official Fabric installer.</p>
+          </li>
+          <li>
+            <h3>Download the RLHUD player JAR</h3>
+            <p>Use the <strong>Download RLHUD 1.0.0</strong> button above. This is <code>rlhud-1.0.0.jar</code>.</p>
+          </li>
+          <li>
+            <h3>Place the JAR in your mods folder</h3>
+            <p>Copy the file into the <code>mods</code> folder inside your Minecraft directory.</p>
+          </li>
+          <li>
+            <h3>Launch with the Fabric profile</h3>
+            <p>Start Minecraft using the Fabric profile you created in the launcher.</p>
+          </li>
+        </ol>
+
+        <p class="note">
+          <strong>Dependencies:</strong> Check the mod's metadata in the <a href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">repository<span class="sr-only"> (opens in a new tab)</span></a> for any required Fabric API dependency before launching.
+        </p>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT -->
+    <section class="section section-alt" aria-labelledby="dev-heading">
+      <div class="container narrow">
+        <header class="section-header">
+          <p class="eyebrow">Development</p>
+          <h2 id="dev-heading">About the project</h2>
+        </header>
+        <p>Rasin's Lightweight HUD is a PvP HUD for Minecraft Java Edition, built with Java and the Fabric modding framework. The project is open source and available under the MIT license.</p>
+        <p>Current development status: version 1.0.0 is published. Features marked In Development on this page are not yet complete.</p>
+        <p class="actions-inline">
+          <a class="btn btn-secondary" href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">Source repository<span class="sr-only"> (opens in a new tab)</span></a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">Rasin's Lightweight HUD</p>
+        <p class="footer-compat">Minecraft Java Edition 1.21.11 · Fabric</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="https://github.com/sahilisrasin/RasinsLightweightHUD" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+      <p class="footer-license">Released under the MIT License.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

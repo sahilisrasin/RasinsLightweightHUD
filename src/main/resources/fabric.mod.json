@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "rlhud",
+	"version": "${version}",
+	"name": "Rasin's Lightweight HUD",
+	"description": "An all in one, fully feature-packed pvp mod suite so you dont have to install 80 different mods",
+	"authors": [
+		"sahilisrasin"
+	],
+	"contact": {
+		"homepage": "https://sahilisrasin.github.io/RasinsLightweightHUD/",
+		"sources": "https://github.com/sahilisrasin/RasinsLightweightHUD"
+	},
+	"license": "MIT",
+	"icon": "assets/rlhud/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"com.sahilisrasin.Rlhud"
+		],
+		"client": [
+			"com.sahilisrasin.client.RlhudClient"
+		]
+	},
+	"mixins": [
+		"rlhud.mixins.json",
+		{
+			"config": "rlhud.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
