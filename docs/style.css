@@ -1,0 +1,988 @@
+/* ==========================================================================
+   Rasin's Lightweight HUD (RLHUD) — official site styles
+   Dark, restrained, one accent (#62d8ff — the mod's own HUD accent color).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --bg: #0f1216;
+  --surface: #131820;
+  --panel: #101820;          /* the mod's actual HUD panel color */
+  --border: #222a33;
+  --border-strong: #2e3843;
+
+  --text: #e8edf3;
+  --text-2: #9aa6b2;
+  --text-3: #6b7683;
+
+  --accent: #62d8ff;         /* the mod's own HUD accent color */
+  --accent-ink: #062430;     /* readable text on accent */
+  --accent-dim: rgba(98, 216, 255, 0.14);
+  --accent-border: rgba(98, 216, 255, 0.38);
+
+  --warn: #ffaa00;           /* reused from the HUD's mid-durability color */
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --container: 1040px;
+  --header-h: 64px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus-visible {
+  top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Layout helpers
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+section {
+  padding-block: 88px;
+}
+
+section + section {
+  border-top: 1px solid var(--border);
+}
+
+.section-lede {
+  color: var(--text-2);
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.section-footnote {
+  font-size: 14px;
+  color: var(--text-3);
+  margin-top: 28px;
+}
+
+.section-footnote a,
+.downloads-links a {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   4. Header & navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: rgba(15, 18, 22, 0.88);
+  border-bottom: 1px solid var(--border);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .site-header {
+    background: rgba(15, 18, 22, 0.75);
+    backdrop-filter: blur(8px);
+  }
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 650;
+  min-width: 0;
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex: none;
+}
+
+.brand-abbr {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.brand-full {
+  color: var(--text-3);
+  font-weight: 450;
+  border-left: 1px solid var(--border-strong);
+  padding-left: 12px;
+  white-space: nowrap;
+}
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  display: block;
+  color: var(--text-2);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="true"] {
+  color: var(--accent);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px;
+  cursor: pointer;
+}
+
+.nav-toggle-box {
+  display: block;
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+
+.nav-toggle-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform 0.18s ease, opacity 0.18s ease, top 0.18s ease;
+}
+
+.nav-toggle-bar:nth-child(1) { top: 0; }
+.nav-toggle-bar:nth-child(2) { top: 6px; }
+.nav-toggle-bar:nth-child(3) { top: 12px; }
+
+.site-header.menu-open .nav-toggle-bar:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.site-header.menu-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.site-header.menu-open .nav-toggle-bar:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+
+@media (max-width: 720px) {
+  .brand-full {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    display: none;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
+    padding: 8px 16px 16px;
+  }
+
+  .site-header.menu-open .site-nav {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .site-nav a {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  text-align: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+              color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-primary:hover {
+  background: #7ee0ff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-block: 104px 96px;
+}
+
+.compat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 28px;
+  background: var(--surface);
+}
+
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.hero-lede {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: var(--text-2);
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mono-chip {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Product preview
+   -------------------------------------------------------------------------- */
+.preview-figure {
+  margin: 0;
+  max-width: 720px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.preview-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 6px);
+  background: #0b0e12;
+}
+
+.preview-figure figcaption {
+  font-size: 14px;
+  color: var(--text-2);
+  padding: 14px 4px 2px;
+}
+
+.figcaption-note {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   8. Features
+   -------------------------------------------------------------------------- */
+.status-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.status-available,
+.status-inline.status-available {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+.status-available .status-dot,
+.status-inline.status-available .status-dot {
+  background: var(--accent);
+}
+
+.status-planned,
+.status-inline.status-planned {
+  color: var(--text-2);
+}
+
+.status-planned .status-dot,
+.status-inline.status-planned .status-dot {
+  background: var(--text-3);
+}
+
+.feature-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.15s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--border-strong);
+}
+
+.feature-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.feature-head h3 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.feature-card p {
+  color: var(--text-2);
+  font-size: 14.5px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. Downloads
+   -------------------------------------------------------------------------- */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.download-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.download-card-primary {
+  border-color: var(--accent-border);
+  background: linear-gradient(180deg, rgba(98, 216, 255, 0.05), transparent 55%), var(--surface);
+}
+
+.download-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+
+.download-badge-accent {
+  color: var(--accent);
+}
+
+.download-card h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.file-chip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.file-chip code {
+  font-size: 13.5px;
+  padding: 5px 10px;
+}
+
+.file-size {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.download-desc {
+  color: var(--text-2);
+  font-size: 14.5px;
+  margin-bottom: 16px;
+}
+
+.download-specs {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.download-specs li {
+  font-size: 13.5px;
+  color: var(--text-2);
+  padding-left: 16px;
+  position: relative;
+}
+
+.download-specs li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: var(--text-3);
+}
+
+.download-sub {
+  font-size: 12.5px;
+  color: var(--text-3);
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+.callout {
+  margin-top: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+
+.callout p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 14.5px;
+}
+
+.callout strong {
+  color: var(--text);
+}
+
+.downloads-links {
+  margin-top: 24px;
+  font-size: 14.5px;
+  color: var(--text-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Compatibility
+   -------------------------------------------------------------------------- */
+.compat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.compat-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.compat-panel h3 {
+  font-size: 16px;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.compat-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.compat-panel dl div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.compat-panel dt {
+  font-size: 13.5px;
+  color: var(--text-3);
+}
+
+.compat-panel dd {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .compat-panel dl div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Installation
+   -------------------------------------------------------------------------- */
+.install-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+  max-width: 720px;
+}
+
+.install-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 36px 64px;
+}
+
+.install-steps li:last-child {
+  padding-bottom: 0;
+}
+
+.install-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-dim);
+  border-radius: var(--radius-sm);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.install-steps li::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 48px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+
+.install-steps li:last-child::after {
+  display: none;
+}
+
+.install-steps h3 {
+  font-size: 16.5px;
+  margin-bottom: 6px;
+}
+
+.install-steps p {
+  color: var(--text-2);
+  font-size: 14.5px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. Development
+   -------------------------------------------------------------------------- */
+.development-body {
+  max-width: 720px;
+}
+
+.development-body p {
+  color: var(--text-2);
+}
+
+.fact-row {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fact-row li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+}
+
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   13. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 40px;
+  background: var(--panel);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.footer-brand .brand-mark {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-tagline {
+  color: var(--text-3);
+  font-size: 14px;
+  margin: 10px 0 0;
+  max-width: 280px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.footer-nav a {
+  color: var(--text-2);
+  font-size: 14.5px;
+}
+
+.footer-nav a:hover {
+  color: var(--accent);
+}
+
+.footer-meta {
+  font-size: 14px;
+  color: var(--text-3);
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.footer-meta p {
+  margin: 0;
+}
+
+.footer-meta a {
+  color: var(--text-2);
+}
+
+.footer-meta a:hover {
+  color: var(--accent);
+}
+
+.footer-legal {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-legal p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+@media (max-width: 720px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsive spacing & typography
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  section {
+    padding-block: 64px;
+  }
+
+  .hero {
+    padding-block: 72px 64px;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Reduced motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

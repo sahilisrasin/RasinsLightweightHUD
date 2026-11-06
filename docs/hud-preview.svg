@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 655 480" width="655" height="480" role="img" aria-label="Illustrative mockup of the RLHUD overlay panel">
+  <!--
+    Illustrative preview of the RLHUD 1.0.0 armor HUD panel, drawn from the
+    mod's actual render code (RlhudClient.java at the ArmorHUD tag):
+    115x80 panel at the top-left, title "RLHUD" in #62d8ff, an FPS line,
+    and Head/Chest/Legs/Feet durability lines color-coded green / orange /
+    red / gray. Shown at 5x scale with sample values. This is NOT an
+    in-game screenshot.
+  -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#141a21" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="655" height="480" fill="#0b0e12"/>
+  <rect width="655" height="480" fill="url(#grid)"/>
+
+  <!-- HUD panel: 115x80 in-game pixels at 5x scale -->
+  <rect x="40" y="40" width="575" height="400" fill="#101820" fill-opacity="0.88"/>
+
+  <g font-family="ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, Consolas, monospace" font-size="40">
+    <text x="70" y="97"  fill="#62d8ff">RLHUD</text>
+    <text x="70" y="162" fill="#ffffff">FPS: 243</text>
+    <text x="70" y="227" fill="#55ff55">Head: 87%</text>
+    <text x="70" y="282" fill="#ffaa00">Chest: 43%</text>
+    <text x="70" y="337" fill="#ff5555">Legs: 12%</text>
+    <text x="70" y="392" fill="#aaaaaa">Feet: --</text>
+  </g>
+</svg>
